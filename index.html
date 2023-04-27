@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="script.js" defer></script>
+    <title>Library</title>
+</head>
+<body>
+    <header class="header">
+        <h1>Library</h1>
+    </header>
+   <main class="main-container">
+    <button class="btn" id="openForm">+ New Book</button>
+    <div class="form-popup" id="myForm">
+        <form action="/action_page.php" class="form-container">
+            <h1>Add Book</h1>
+        
+            <label for="book"><b>Title</b></label>
+            <input type="text" placeholder="The Hobit" name="Title" required>
+        
+            <label for="author"><b>Author</b></label>
+            <input type="text" placeholder="J.R.R. Tolkien" name="Author" required>
+            
+            <label for="pages"><b>Pages</b></label>
+            <input type="number" placeholder="123" name="Pages" required>
+
+            <button type="submit" class="btn">Add</button>
+            <button type="button" class="btn cancel">Cancel</button>
+          </form>
+    </div>
+   </main>
+   <div class="container"></div>
+</body>
+</html>

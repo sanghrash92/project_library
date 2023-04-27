@@ -1,0 +1,81 @@
+body {
+    box-sizing: border-box;
+    background-color: red;
+}
+
+.main-container {
+    text-align: center;
+}
+
+.header {
+    background-color: aliceblue;
+    text-align: center;
+    padding: 0;
+}
+
+.header > h1 {
+    font-size: 5rem;
+}
+
+.open-button {
+    background-color: #555;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 23px;
+    right: 28px;
+    width: 280px;
+}
+
+.form-popup {
+    display: none;
+    margin: 10px auto;
+    width: 300px
+}
+
+/* Add styles to the form container */
+.form-container {
+    display:grid;
+    grid-template-columns: 1fr;
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+}
+
+.form-container input[type=text], input[type=number]{
+    padding: 0.5em 0;
+    margin: 5px 0 8px 0;
+    text-align: center;
+}
+
+.form-container input[type=text]:focus {
+    background-color: #ddd;
+}
+ 
+.form-container .btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.form-container .btn:first-of-type {
+    margin: 5px 0 0 0;
+}
+
+.form-container .cancel {
+    background-color: red;
+}
+
+.form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+  }
