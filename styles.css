@@ -4,13 +4,28 @@ body {
 }
 
 .main-container {
-    text-align: center;
+    border: 1px solid blue;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 360px));
+    grid-template-rows: minmax(1fr, 2fr);
 }
 
 .header {
     background-color: aliceblue;
     text-align: center;
     padding: 0;
+}
+
+.container {
+    border: 1px solid black;
+    height: 400px;
+    width: 250px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
 }
 
 .header > h1 {
@@ -31,18 +46,29 @@ body {
 }
 
 .form-popup {
-    display: none;
-    margin: 10px auto;
-    width: 300px
+    /* display: none; */
+    margin: auto;
+    width: 400px;
+    max-width: 40%;
+    text-align: center;
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform:  translate(-55%, -50%);
+    z-index: 10;
+    background-color: white;
+    border-radius: 10px;
 }
 
 /* Add styles to the form container */
 .form-container {
     display:grid;
     grid-template-columns: 1fr;
-    max-width: 300px;
+    width: 400px;
+    height: 500px;
     padding: 10px;
     background-color: white;
+    border-radius: 10px;
 }
 
 .form-container input[type=text], input[type=number]{
