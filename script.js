@@ -1,4 +1,37 @@
+const openModalButton = document.querySelectorAll('[data-modal-target]');
+const closeModalButton = document.querySelectorAll('[data-close-button]');
+const overlay = document.getElementById('overlay');
+const title = document.querySelector('#title');
+const author = document.querySelector("#author");
+const pages = document.querySelector('#pages');
+
 let myLibrary = [];
+
+openModalButton.forEach(button => {
+    button.addEventListener('click', () => {
+        const modal = document.querySelector(button.dataset.modalTarget)
+        openModal(modal)
+    })
+})
+
+closeModalButton.forEach(button => {
+    button.addEventListener('click', () => {
+        const modal = button.closest('.modal')
+        closeModal(modal)
+    })
+})
+
+function openModal(modal) {
+    if (modal == null) return;
+    modal.classList.add('active');
+    overlay.classList.add('active');
+}
+
+function closeModal(modal) {
+    if (modal == null) return;
+    modal.classList.remove('active');
+    overlay.classList.remove('active');
+}
 
 function Book(title, author, numPages, status) {
     this.title = title,
@@ -6,16 +39,6 @@ function Book(title, author, numPages, status) {
     this.numPages = numPages,
     this.status = status
 }
-
-
-const title = document.querySelector('#title');
-const author = document.querySelector("#author");
-const pages = document.querySelector('#pages');
-const submit = document.querySelector('.submit');
-const openBtn = document.querySelector('.btn');
-const closeBtn = document.querySelector(".cancel");
-
-submit.addEventListener('click', addBookToLibrary)
 
 function addBookToLibrary() {
     let addBook = new Book(title.value, author.value, pages.value);
@@ -26,18 +49,6 @@ function addBookToLibrary() {
     }
     console.log(myLibrary)
     reset();
-    closeForm();
-    render();
-}
-
-
-function render() {
-    const container = document.querySelector('.container');
-    const author = document.querySelector('.author');
-    author.style.color = 'blue'
-    author.textContent = `${myLibrary[0]}`;
-    container.style.display = 'grid';
-    container.style.gridTemplateRows = 'repeat(3fr)'
 }
 
 function reset() {
@@ -46,17 +57,6 @@ function reset() {
     pages.value = '';
 }
 
-function openForm() {
-    document.getElementById('myForm').style.display = "block";
-}
-
-function closeForm() {
-    reset();
-    document.getElementById("myForm").style.display = "none";
-}
-
-openBtn.addEventListener('click', openForm)
-closeBtn.addEventListener('click', closeForm)
 
 
 

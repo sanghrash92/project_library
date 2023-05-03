@@ -11,41 +11,25 @@
 <body>
     <header class="header">
         <h1>Library</h1>
-        <button class="btn" id="openForm">+ New Book</button>
     </header>
-   <main class="main-container">
-        <div class="book-container" id="book-page">
-            <div class="container">
-                <div class="author-container">
-                    <h2>Author</h2>
-                    <h4 class="author"></h4>
-                </div>
-                <div class="title-container">
-                    <h2>Title</h2>
-                    <h4 class="title"></h4>
-                </div>
-                <div class="page-container">
-                    <h2>Pages</h2>
-                    <h4 class="page"></h4>
-                </div>
-            </div>
-        </div>
-        <div class="form-popup" id="myForm">
-            <div class="form-container">
-                <h1>Add Book</h1>
-                <label for="book"><b>Title</b></label>
-                <input type="text" placeholder="The Hobit" name="Title" id="title" required>
+    
+    <button data-modal-target="#modal" class="btn">+New Book</button>
+    <div class="modal" id="modal">
+        <div class="form-modal">
+            <h1>Add Book</h1>
+            <label for="book"><b>Title</b></label>
+            <input type="text" placeholder="The Hobit" name="Title" id="title" required>
             
-                <label for="author"><b>Author</b></label>
-                <input type="text" placeholder="J.R.R. Tolkien" name="Author" id="author" required>
-                
-                <label for="pages"><b>Pages</b></label>
-                <input type="number" placeholder="123" name="Pages" id="pages" required>
-
-                <button type="button" class="btn submit">Add</button>
-                <button type="button" class="btn cancel">Cancel</button>
-            </div>
+            <label for="author"><b>Author</b></label>
+            <input type="text" placeholder="J.R.R. Tolkien" name="Author" id="author" required>
+            
+            <label for="pages"><b>Pages</b></label>
+            <input type="number" placeholder="123" name="Pages" id="pages" required>
+            
+            <button class="btn add">Add</button>
+            <button data-close-button type="button" class="btn cancel">Cancel</button>
         </div>
-   </main>
+    </div>
+    <div id="overlay"></div>
 </body>
 </html>

@@ -1,107 +1,72 @@
 body {
     box-sizing: border-box;
-    background-color: red;
-}
-
-.main-container {
-    border: 1px solid blue;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 360px));
-    grid-template-rows: minmax(1fr, 2fr);
-}
-
-.header {
-    background-color: aliceblue;
     text-align: center;
-    padding: 0;
 }
 
-.container {
-    border: 1px solid black;
-    height: 400px;
-    width: 250px;
-    background-color: white;
-    color: black;
-    text-align: center;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, 1fr);
-}
-
-.header > h1 {
-    font-size: 5rem;
-}
-
-.open-button {
-    background-color: #555;
-    color: white;
-    padding: 16px 20px;
-    border: none;
-    cursor: pointer;
-    opacity: 0.8;
+.modal {
     position: fixed;
-    bottom: 23px;
-    right: 28px;
-    width: 280px;
-}
-
-.form-popup {
-    /* display: none; */
-    margin: auto;
-    width: 400px;
-    max-width: 40%;
-    text-align: center;
-    position: fixed;
-    top: 55%;
+    top: 50%;
     left: 50%;
-    transform:  translate(-55%, -50%);
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
     z-index: 10;
-    background-color: white;
+    border: 1px solid black;
     border-radius: 10px;
-}
-
-/* Add styles to the form container */
-.form-container {
-    display:grid;
-    grid-template-columns: 1fr;
+    background-color: white;
     width: 400px;
-    height: 500px;
-    padding: 10px;
-    background-color: white;
-    border-radius: 10px;
+    max-width: 70%;
 }
 
-.form-container input[type=text], input[type=number]{
-    padding: 0.5em 0;
-    margin: 5px 0 8px 0;
+.modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.form-modal {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(9, 50px);
+    padding: 0 4px 14px 4px;
+}
+
+.form-modal > h1 {
+    margin: 15px 0 0 0;
+    font-size: 2rem;
+}
+
+.form-modal > input {
     text-align: center;
+    font-size: 1rem;
+    border-radius: 4px;
 }
 
-.form-container input[type=text]:focus {
-    background-color: #ddd;
-}
- 
-.form-container .btn {
-    background-color: #04AA6D;
-    color: white;
-    padding: 16px 20px;
-    border: none;
+.form-modal .add, .cancel {
     cursor: pointer;
-    width: 100%;
-    margin-bottom:10px;
-    opacity: 0.8;
     font-size: 1.2rem;
-    font-weight: 800;
 }
 
-.form-container .btn:first-of-type {
-    margin: 5px 0 0 0;
+.form-modal > input:last-of-type {
+    margin: 0 0 5px 0;
 }
 
-.form-container .cancel {
-    background-color: red;
+label {
+    padding: 15px 0 0 0;
+    font-size: 1.2rem;
 }
 
-.form-container .btn:hover, .open-button:hover {
+#overlay {
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    transition: 200ms ease-in-out;
+    pointer-events: none;
+}
+
+#overlay.active {
     opacity: 1;
-  }
+    pointer-events: all;
+}
+
