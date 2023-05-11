@@ -1,11 +1,8 @@
+// form set up
+
 const openModalButton = document.querySelectorAll('[data-modal-target]');
 const closeModalButton = document.querySelectorAll('[data-close-button]');
 const overlay = document.getElementById('overlay');
-const title = document.querySelector('#title');
-const author = document.querySelector("#author");
-const pages = document.querySelector('#pages');
-
-let myLibrary = [];
 
 openModalButton.forEach(button => {
     button.addEventListener('click', () => {
@@ -33,30 +30,79 @@ function closeModal(modal) {
     overlay.classList.remove('active');
 }
 
-function Book(title, author, numPages, status) {
-    this.title = title,
-    this.author = author,
-    this.numPages = numPages,
-    this.status = status
+const title = document.querySelector('#title');
+const author = document.querySelector('#author');
+const pages = document.querySelector('#pages');
+let read = document.querySelector('#read');
+const add = document.querySelector('.add');
+const closeBtn = document.querySelector('.modal');
+
+
+let myLibrary = [];
+
+function Book(title, author, pages, read) {
+    this.title = title.value,
+    this.author = author.value,
+    this.pages = pages.value,
+    this.read = read.checked
 }
 
-function addBookToLibrary() {
-    let addBook = new Book(title.value, author.value, pages.value);
-    for(let book in addBook) {
-        if(addBook.hasOwnProperty(book)) {
-            myLibrary.push(addBook[book]);
-        }
-    }
-    console.log(myLibrary)
-    reset();
+let addBook;
+
+function addBookToLibrary(event) {
+    event.preventDefault();
+    addBook = new Book(title, author, pages, read);
+    myLibrary.push(addBook);
+    createBook();
+    reset()
 }
+
+add.addEventListener("click", addBookToLibrary)
+
+function createBook() {
+    const library = document.querySelector('.library-container');
+    const bookContainer = document.createElement('div');
+    const titleDiv = document.createElement('h3');
+    const authorDiv = document.createElement('h3');
+    const pagesDiv = document.createElement('h3');
+    const read = document.createElement('button')
+    const removeBtn = document.createElement('button')
+    
+    for (let i = 0; i < myLibrary.length; i++) {
+
+        titleDiv.textContent = myLibrary[i].title;
+        bookContainer.insertBefore(titleDiv, authorDiv.nextSibling);
+        
+        authorDiv.textContent = myLibrary[i].author;
+        bookContainer.insertBefore(authorDiv, pagesDiv.nextSibling);
+        
+        pagesDiv.textContent = myLibrary[i].pages;
+        bookContainer.insertBefore(pagesDiv, read.nextSibling);
+
+        bookContainer.insertBefore(read, removeBtn.nextSibling);
+        if (myLibrary[i].read === false) {
+            read.textContent = 'Not Read';
+            read.style.backgroundColor = 'red';
+        } else {
+            read.textContent = 'Read';
+            read.style.backgroundColor = 'green';
+        }
+
+        removeBtn.textContent = 'Remove';
+        removeBtn.classList.add('remove')
+        bookContainer.insertBefore(removeBtn, null)
+        
+        bookContainer.classList.add('grid-item');
+        library.appendChild(bookContainer);
+    }
+}
+
+
 
 function reset() {
     title.value = '';
     author.value = '';
     pages.value = '';
+    read.checked = '';
+    closeModal(closeBtn);
 }
-
-
-
-

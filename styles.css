@@ -1,5 +1,4 @@
 body {
-    box-sizing: border-box;
     text-align: center;
 }
 
@@ -48,7 +47,7 @@ body {
     margin: 0 0 5px 0;
 }
 
-label {
+.label {
     padding: 15px 0 0 0;
     font-size: 1.2rem;
 }
@@ -69,4 +68,53 @@ label {
     opacity: 1;
     pointer-events: all;
 }
+
+.library-container {
+    margin: 1.5em 0 0 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.grid-item {
+    background-color: azure ;
+    height: 300px;
+    width: 250px;
+    border: 1px solid blue;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.remove {
+    background-color: red;
+    margin: 4px;
+    padding: 4px 0;
+    border-radius: 5ps;
+    font-size: 1.2rem;
+}
+
+.read {
+    padding: 10px;
+    font-size: 1.1em;
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    cursor: pointer; 
+}
+
+.green {
+    background: green;
+    color: white;
+};
+
+.red {
+    background: red;
+    color: white;
+}
+
+
 

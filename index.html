@@ -14,22 +14,26 @@
     </header>
     
     <button data-modal-target="#modal" class="btn">+New Book</button>
-    <div class="modal" id="modal">
+    <form action="./script.js" class="modal" id="modal">
         <div class="form-modal">
             <h1>Add Book</h1>
-            <label for="book"><b>Title</b></label>
+            <div class="label"><b>Titles</b></div>
             <input type="text" placeholder="The Hobit" name="Title" id="title" required>
             
-            <label for="author"><b>Author</b></label>
+            <div class="label"><b>Author</b></div>
             <input type="text" placeholder="J.R.R. Tolkien" name="Author" id="author" required>
             
-            <label for="pages"><b>Pages</b></label>
+            <div class="label"><b>Pages</b></div>
             <input type="number" placeholder="123" name="Pages" id="pages" required>
+
+            <div class="label"><b>Have you read it?</b> <input type="checkbox" id="read" value="false" required></div>
             
-            <button class="btn add">Add</button>
+            <button type="submit" class="btn add">Add</button>
             <button data-close-button type="button" class="btn cancel">Cancel</button>
         </div>
-    </div>
+    </form>
     <div id="overlay"></div>
+    <div class="library-container">
+    </div>
 </body>
 </html>
