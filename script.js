@@ -52,12 +52,15 @@ let addBook;
 function addBookToLibrary(event) {
     event.preventDefault();
     addBook = new Book(title, author, pages, read);
-    myLibrary.push(addBook);
-    createBook();
-    reset()
+    if(addBook.title === '' || addBook.author === '' || addBook.pages === '') {
+        alert('Please input the required fields!')
+    } else {
+        myLibrary.push(addBook);
+        createBook();
+        reset();
+    }
 }
 
-add.addEventListener("click", addBookToLibrary)
 
 function createBook() {
     const library = document.querySelector('.library-container');
@@ -65,11 +68,11 @@ function createBook() {
     const titleDiv = document.createElement('h3');
     const authorDiv = document.createElement('h3');
     const pagesDiv = document.createElement('h3');
-    const read = document.createElement('button')
-    const removeBtn = document.createElement('button')
+    const readBtn = document.createElement('button');
+    const removeBtn = document.createElement('button');
     
     for (let i = 0; i < myLibrary.length; i++) {
-
+        
         titleDiv.textContent = myLibrary[i].title;
         bookContainer.insertBefore(titleDiv, authorDiv.nextSibling);
         
@@ -77,27 +80,49 @@ function createBook() {
         bookContainer.insertBefore(authorDiv, pagesDiv.nextSibling);
         
         pagesDiv.textContent = myLibrary[i].pages;
-        bookContainer.insertBefore(pagesDiv, read.nextSibling);
-
-        bookContainer.insertBefore(read, removeBtn.nextSibling);
+        bookContainer.insertBefore(pagesDiv, readBtn.nextSibling);
+        
+        readBtn.classList.add('button-read')
+        bookContainer.insertBefore(readBtn, removeBtn.nextSibling);
         if (myLibrary[i].read === false) {
-            read.textContent = 'Not Read';
-            read.style.backgroundColor = 'red';
+            readBtn.textContent = 'Not Read';
+            readBtn.style.backgroundColor = 'red';
         } else {
-            read.textContent = 'Read';
-            read.style.backgroundColor = 'green';
+            readBtn.textContent = 'Read';
+            readBtn.style.backgroundColor = 'green';
         }
-
+        
         removeBtn.textContent = 'Remove';
-        removeBtn.classList.add('remove')
-        bookContainer.insertBefore(removeBtn, null)
+        removeBtn.classList.add('remove');
+        bookContainer.insertBefore(removeBtn, null);
         
         bookContainer.classList.add('grid-item');
         library.appendChild(bookContainer);
+
+        
     }
+    
+    readBtn.addEventListener("click", changeRead)
+        
+    function changeRead() {
+        for(let books in myLibrary) {
+            myLibrary[books].read = !myLibrary[books].read;  
+            if(myLibrary[books].read === false) {
+                readBtn.textContent = 'Not Read';
+                readBtn.style.backgroundColor = 'red';
+            } else {
+                readBtn.style.backgroundColor = 'green';
+                readBtn.textContent = 'Read';
+            }
+        }
+
+    }
+    
+    removeBtn.addEventListener('click', () => {
+        myLibrary.splice(myLibrary.findIndex(item => item.field === title.valu), 1);
+        library.removeChild(bookContainer);
+    })
 }
-
-
 
 function reset() {
     title.value = '';
@@ -106,3 +131,5 @@ function reset() {
     read.checked = '';
     closeModal(closeBtn);
 }
+
+add.addEventListener("click", addBookToLibrary)

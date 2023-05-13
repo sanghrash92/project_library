@@ -13,24 +13,24 @@
         <h1>Library</h1>
     </header>
     
-    <button data-modal-target="#modal" class="btn">+New Book</button>
+    <button data-modal-target="#modal" class="btn new-book">+New Book</button>
     <form action="./script.js" class="modal" id="modal">
-        <div class="form-modal">
+        <fieldset class="form-modal">
             <h1>Add Book</h1>
-            <div class="label"><b>Titles</b></div>
+            <label for="title" class="label"><b>Titles</b></label>
             <input type="text" placeholder="The Hobit" name="Title" id="title" required>
             
-            <div class="label"><b>Author</b></div>
+            <label for="author" class="label"><b>Author</b></label>
             <input type="text" placeholder="J.R.R. Tolkien" name="Author" id="author" required>
             
-            <div class="label"><b>Pages</b></div>
+            <label for="pages" class="label"><b>Pages</b></label>
             <input type="number" placeholder="123" name="Pages" id="pages" required>
 
-            <div class="label"><b>Have you read it?</b> <input type="checkbox" id="read" value="false" required></div>
+            <label for="read" class="label"><b>Have you read it?</b> <input type="checkbox" name="Pages" id="read" value="false" required></label>
             
             <button type="submit" class="btn add">Add</button>
             <button data-close-button type="button" class="btn cancel">Cancel</button>
-        </div>
+        </fieldset>
     </form>
     <div id="overlay"></div>
     <div class="library-container">
