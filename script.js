@@ -40,11 +40,13 @@ const closeBtn = document.querySelector('.modal');
 
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
-    this.title = title.value,
-    this.author = author.value,
-    this.pages = pages.value,
-    this.read = read.checked
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title.value,
+        this.author = author.value,
+        this.pages = pages.value,
+        this.read = read.checked
+    }
 }
 
 let addBook;
